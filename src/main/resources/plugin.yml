@@ -1,0 +1,9 @@
+name: MCQOL
+version: "1.0"
+main: io.github.Inspirateur.MCQOL.Main
+author: Inspirateur
+description: Plugin with various Quality Of Life improvement
+commands:
+  suicide:
+    description: literally kills you.
+    usage: /suicide
