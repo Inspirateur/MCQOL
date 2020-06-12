@@ -7,3 +7,6 @@ commands:
   suicide:
     description: literally kills you.
     usage: /suicide
+  pacifist:
+    description: join or leave the pacifist category, disabling hurting between you and any other player
+    usage: /pacifist true|false
