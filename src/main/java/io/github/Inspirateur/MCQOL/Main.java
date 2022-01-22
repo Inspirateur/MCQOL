@@ -7,7 +7,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityExplodeEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.weather.WeatherChangeEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
@@ -76,5 +78,16 @@ public class Main extends JavaPlugin implements Plugin, Listener, TabCompleter {
 	@EventHandler
 	public void onEntityExplode(EntityExplodeEvent event) {
 		event.setYield(100f);
+	}
+
+	@EventHandler
+	public void onPlayerDeath(PlayerDeathEvent event) {
+		Player player = event.getPlayer();
+		for (ItemStack armor: player.getInventory().getArmorContents()) {
+			if (armor != null) {
+				event.getItemsToKeep().add(armor);
+				event.getDrops().remove(armor);
+			}
+		}
 	}
 }
